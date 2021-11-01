@@ -1,2 +1,2 @@
-# islr-r-code
+# islr-2e-solutions
 Solutions and code examples from An Introduction to Statistical Learning (Second Edition) by James, Witten, Hastie, and Tibshirani.
