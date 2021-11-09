@@ -2,10 +2,12 @@ set.seed(1)
 
 library(ISLR2)
 
+#Default data set
 View(Default)
 names(Default)
 attach(Default)
 
+#logistic regression
 lr.fit <- glm(default ~ income + balance,
               family = binomial,
               data = Default)
@@ -184,7 +186,7 @@ predict(lr2.fit,  Weekly)[1] #0.287534 < 0.5 therfore, "Down" which is correct
 data <- 1:length(Lag1)
 cv.pred <- rep(0,length(Lag1))
 
-#for loop
+#for loop to perform LOOCV manually
 for (i in 1:length(Lag1)){
   lr.fit <- glm(Direction ~ Lag1 + Lag2,
                 family = binomial,
@@ -211,7 +213,7 @@ plot(x,y, col=2)
 #array of size 10 filled with zeros
 cv.LOOCV.error <- rep(0,4)
 
-#create a for loop that iterates 1 through n that fits linear regression and calculates LOOCV
+#create a for loop that iterates 1 through 4 (powers of x) that fits linear regression and calculates LOOCV
 for (i in 1:4) {
   glm1.fit <- glm(y ~ poly(x,i), data = data.frame(cbind(x,y)))
   cv.LOOCV.error[i] <- cv.glm(data.frame(cbind(x,y)), glm1.fit)$delta[1]
